@@ -1,0 +1,36 @@
+﻿@using EFRelationships.Web.Models;
+@using EFRelationships.Data;
+@model QuestionViewModel
+
+<div b-k8y6yzo0ym class="container">
+    <main b-k8y6yzo0ym role="main" class="pb-3">
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2" style="margin-top:100px">
+                <div class="col-md-8 offset-md-2" style="margin-top:100px">
+                @foreach(var question in Model.Questions)
+                {
+                    <div class="card card-body bg-light">
+                        <h4>
+                            <a href="/questions/viewquestion?id=@question.Id">
+                              @question.Title
+                            </a>
+                        </h4>
+                        <div>
+                            <span>Tags:</span>
+                             @String.Join(", ", question.QuestionsTags.Select(q => q.Tag.Name))
+                        </div>
+                        <div style="margin-top: 10px;">
+                            @question.Text
+                        </div> 
+                            <span>@question.Answers.Count() answer(s)</span>
+                    </div>
+                }
+               
+                
+            </div>
+        </div>
+    </div>
+
+    </main>
+</div>
